@@ -12,6 +12,7 @@ class Rawdata(BaseModel):
 
 
 class Imgdata(BaseModel):
+    device_id: str = Field(examples=['cam'], default=None)
     name: str = Field(examples=['img_name.jpg'], default=None)
     timestamp: float = Field(examples=[1717657200.000000], default=None)
     width: int = Field(examples=[1920], default=None)
