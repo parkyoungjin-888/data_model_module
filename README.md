@@ -25,3 +25,4 @@ poetry install
 + v0.1.1: validate_decorator 추가
 + v0.1.2: batch 모델 수정, 빌드 파일 제거
 + v0.1.3: 레포 분리, validate_decorator try 문 제거
++ v0.1.4: device_id 추가
