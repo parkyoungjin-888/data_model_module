@@ -1,4 +1,0 @@
-from data_model_module.beanie_data_model.model_importer import import_model
-from data_model_module.beanie_data_model.user_model import User, ProjectUser
-from data_model_module.beanie_data_model.img_process_model import ImgProcess, ProjectImgProcess
-from data_model_module.beanie_data_model.images_model import Image, ProjectImage

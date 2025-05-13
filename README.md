@@ -27,3 +27,4 @@ poetry install
 + v0.1.3: 레포 분리, validate_decorator try 문 제거
 + v0.1.4: device_id 추가
 + v0.1.5: images_model 추가
++ v0.1.6: 모델 파일을 minio 에서 관리, 다운로드 및 파일 버전 관리 
