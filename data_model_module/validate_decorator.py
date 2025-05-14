@@ -1,7 +1,7 @@
 from functools import wraps
+from pydantic import BaseModel
 
-
-def validate_input(model):
+def validate_input(model: BaseModel):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -11,7 +11,7 @@ def validate_input(model):
     return decorator
 
 
-def validate_output(model):
+def validate_output(model: BaseModel):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
