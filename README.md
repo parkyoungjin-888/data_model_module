@@ -28,3 +28,4 @@ poetry install
 + v0.1.4: device_id 추가
 + v0.1.5: images_model 추가
 + v0.1.6: 모델 파일을 minio 에서 관리, 다운로드 및 파일 버전 관리 
++ v0.1.7: 베넷 모듈 제거 테스트
