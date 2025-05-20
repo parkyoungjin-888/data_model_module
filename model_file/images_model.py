@@ -4,7 +4,7 @@ from beanie import PydanticObjectId
 from pydantic import Field, validator
 from datetime import datetime
 
-from data_model_module.beanie_data_model.custom_base_model import CustomBaseModel
+from data_model_module.custom_base_model import CustomBaseModel
 
 
 class Image(CustomBaseModel):

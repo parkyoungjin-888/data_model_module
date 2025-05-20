@@ -3,7 +3,7 @@ from typing import Optional
 from beanie import PydanticObjectId
 from pydantic import Field, validator
 
-from data_model_module.beanie_data_model.custom_base_model import CustomBaseModel
+from data_model_module.custom_base_model import CustomBaseModel
 
 
 class AnalysisCategory(Enum):
