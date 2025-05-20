@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "data-model-module"
-version = "0.1.8"
+version = "0.1.9"
 description = ""
 authors = ["parkyoungjin-888 <pyj8813@gmail.com>"]
 readme = "README.md"
+exclude = ["model_file"]
 
 [tool.poetry.dependencies]
 python = "^3.12"

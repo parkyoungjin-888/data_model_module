@@ -5,7 +5,7 @@ from typing import Optional, Tuple
 
 
 class ModelCacheManager:
-    def __init__(self, s3_client, bucket: str, file: str, file_cache_dir: str = "/tmp/cached_model"):
+    def __init__(self, s3_client, bucket: str, file: str, file_cache_dir: str = "./tmp/cached_model"):
         self.s3_client = s3_client
         self.bucket = bucket
         self.file = file
@@ -52,14 +52,11 @@ class ModelCacheManager:
                 raise FileNotFoundError(f"Model file {self.file} not found in S3")
             raise
 
-    def _load_model(self, model_name: str, auto_download: bool = False):
+    def _load_model(self, model_name: str):
         local_path = os.path.join(self.file_cache_dir, self.file)
         if not os.path.exists(local_path):
-            if auto_download:
-                self.download_model()
-            else:
-                raise ImportError(f"캐시에 {self.file} 파일이 없습니다. download_model을 먼저 호출하거나 auto_download=True로 설정하세요.")
-        
+            self.download_model()
+
         try:
             cache_dir = os.path.dirname(local_path)
             import sys
@@ -72,9 +69,9 @@ class ModelCacheManager:
         except Exception as e:
             raise ImportError(f"Failed to load model {model_name} from file {self.file}: {str(e)}")
 
-    def get_model(self, model_name: str, auto_download: bool = False):
+    def get_model(self, model_name: str):
         if model_name not in self._model_cache:
-            self._load_model(model_name, auto_download=auto_download)
+            self._load_model(model_name)
         return self._model_cache[model_name]
 
     def download_model(self, version: Optional[str] = None):
