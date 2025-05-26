@@ -20,9 +20,17 @@ class Image(CustomBaseModel):
 
 class ProjectImage(CustomBaseModel):
     id: PydanticObjectId = Field(alias='_id')
+    device_id: str
     name: str
-    img_collection: Optional[str | None] = None
+    event_datetime: str | datetime
+    img_path: str
 
     @validator('id', pre=False)
     def convert_object_id2str(cls, value):
         return str(value)
+
+    @validator('event_datetime', pre=False)
+    def convert_datetime_id2str(cls, value: str | datetime):
+        if isinstance(value, datetime):
+            return value.strftime('%Y-%m-%d %H:%M:%S')
+        return value
