@@ -54,8 +54,7 @@ class ModelCacheManager:
 
     def _load_model(self, model_name: str):
         local_path = os.path.join(self.file_cache_dir, self.file)
-        if not os.path.exists(local_path):
-            self.download_model()
+        self.download_model()
 
         try:
             cache_dir = os.path.dirname(local_path)

@@ -31,3 +31,4 @@ poetry install
 + v0.1.7: 베넷 모듈 제거 테스트
 + v0.1.8: model_importor 를 model_cashe_manager 로 변경
 + v0.1.9: model_file 추가, tool.poetry.exclude 로 설정
++ v0.1.10: 신규 버전 모델로 업데이트 하지 않았던 버그 수정
