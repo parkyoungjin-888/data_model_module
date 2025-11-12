@@ -1,6 +1,7 @@
 from functools import wraps
 from pydantic import BaseModel
 
+
 def validate_input(model: BaseModel):
     def decorator(func):
         @wraps(func)
