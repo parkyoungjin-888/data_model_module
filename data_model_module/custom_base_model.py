@@ -1,4 +1,18 @@
 from pydantic import BaseModel, ConfigDict, root_validator
+from datetime import datetime
+
+
+def convert_type_str(obj):
+    if isinstance(obj, dict):
+        return {k: convert_type_str(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_type_str(v) for v in obj]
+    elif isinstance(obj, (str, int, float, bool)) or obj is None:
+        return obj
+    elif isinstance(obj, datetime):
+        return obj.strftime('%Y-%m-%d %H:%M:%S')
+    else:
+        return str(obj)
 
 
 class CustomBaseModel(BaseModel):
@@ -22,3 +36,9 @@ class CustomBaseModel(BaseModel):
                 except ValueError:
                     raise ValueError(f'Field {field_name} expects a float value, got {value}')
         return values
+
+    def model_dump(self, *args, stringify_extra_type=False, **kwargs):
+        result = super().model_dump(*args, **kwargs)
+        if stringify_extra_type:
+            result = convert_type_str(result)
+        return result
